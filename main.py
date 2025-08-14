@@ -1,12 +1,11 @@
 from flask import Flask, jsonify
 from pymongo import MongoClient
-import os
 
 app = Flask(__name__)
 
-# Get MongoDB URL and DB name from environment
-MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
-DB_NAME = os.getenv("DB_NAME", "test")
+# ⚠ Hardcoded MongoDB connection details (unsecure for public repos)
+MONGO_URL = "mongodb+srv://username:password@cluster0.mongodb.net/"
+DB_NAME = "test"
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URL)
@@ -14,7 +13,7 @@ db = client[DB_NAME]
 
 @app.route("/")
 def home():
-    return "MongoDB Full Database Viewer"
+    return "MongoDB Full Database Viewer (Render Ready - Hardcoded URL)"
 
 @app.route("/data")
 def get_full_db():
@@ -24,4 +23,6 @@ def get_full_db():
     return jsonify(db_data)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
