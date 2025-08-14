@@ -4,8 +4,8 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # ⚠ Hardcoded MongoDB connection details (unsecure for public repos)
-MONGO_URL = "mongodb+srv://username:password@cluster0.mongodb.net/"
-DB_NAME = "test"
+MONGO_URL = "mongodb+srv://panigrahij844:9huIJ6yBXCjAxeBT@cluster0.huwvh.mongodb.net/"
+DB_NAME = "Cluster0"
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URL)
